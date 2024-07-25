@@ -7,7 +7,7 @@ module.exports = {
         .addStringOption(option =>
             option.setName('input')
                 .setDescription('The input to echo back')),
-	async execute(interaction) {
+	async execute(interaction, client) {
         let msg = "Pong"
         if(interaction.options.getString('input')) {
             msg = interaction.options.getString('input')
