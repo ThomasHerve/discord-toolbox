@@ -46,9 +46,15 @@ for (const folder of commandFolders) {
 	}
 }
 
-client.once('ready', () => {
+client.once('ready', async () => {
 	console.log('Ready!');
+	try {
+		await require('./deploy-commands');
+	} catch (error) {
+		console.error('Failed to register commands:', error);
+	}
 });
+
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
